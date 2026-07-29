@@ -5,15 +5,15 @@ This diagram outlines the data flow from the Gmail API to the final Google Sheet
 
 ```mermaid
 graph TD
-    User[User] -->|Authenticates (OAuth 2.0)| Script[Python Script]
-    Script -->|1. Fetch Unread Emails| Gmail[Gmail API]
-    Gmail -->|Return Email Data| Script
-    Script -->|2. Check for Duplicates| State{processed_state.json}
-    State -- ID Found --> Skip[Skip Email]
-    State -- ID Not Found --> Process[3. Parse Content]
-    Process -->|4. Append Row| Sheets[Google Sheets API]
-    Process -->|5. Mark as Read| Gmail
-    Process -->|6. Save ID| State
+    User["User"] -->|"Authenticates (OAuth 2.0)"| Script["Python Script"]
+    Script -->|"1. Fetch Unread Emails"| Gmail["Gmail API"]
+    Gmail -->|"Return Email Data"| Script
+    Script -->|"2. Check for Duplicates"| State{"processed_state.json"}
+    State -- "ID Found" --> Skip["Skip Email"]
+    State -- "ID Not Found" --> Process["3. Parse Content"]
+    Process -->|"4. Append Row"| Sheets["Google Sheets API"]
+    Process -->|"5. Mark as Read"| Gmail
+    Process -->|"6. Save ID"| State
 ```
 
 ---
