@@ -14,7 +14,6 @@ graph TD
     Process -->|4. Append Row| Sheets[Google Sheets API]
     Process -->|5. Mark as Read| Gmail
     Process -->|6. Save ID| State
-
 ```
 
 ---
@@ -24,26 +23,34 @@ graph TD
 **Prerequisites:** Python 3, Google Cloud Project with Gmail & Sheets APIs enabled.
 
 1. **Clone the Repository:**
+```bash
+git clone https://github.com/yourusername/gmailtosheets.git
+cd gmailtosheets
+```
 
-2. **Install Dependencies:**
+2. **Set up Virtual Environment (Optional but Recommended):**
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+3. **Install Dependencies:**
 ```bash
 pip install -r requirements.txt
-
 ```
 
-
-3. **Configure Credentials:**
+4. **Configure Credentials:**
 * Place your downloaded `credentials.json` file inside the `credentials/` folder.
-* Open `config.py` and add your **Spreadsheet ID** to the `SPREADSHEET_ID` variable.
+* Copy the example environment file:
+  ```bash
+  cp .env.example .env
+  ```
+* Open the `.env` file and add your **Spreadsheet ID** to the `SPREADSHEET_ID` variable.
 
-
-4. **Run the Application:**
+5. **Run the Application:**
 ```bash
 python3 src/main.py
-
 ```
-
-
 
 ---
 
@@ -86,6 +93,7 @@ I implemented a robust parsing function in `email_parser.py` using the **Beautif
 
 ---
 
+
 ## 5. Limitations
 
 1. **Local State Dependency:** If the `processed_state.json` file is deleted locally, the duplicate prevention history is lost, and old emails might be re-processed if they are still unread.
@@ -95,4 +103,3 @@ I implemented a robust parsing function in `email_parser.py` using the **Beautif
 ---
 
 **Author:** Lakshay | DTU
-
